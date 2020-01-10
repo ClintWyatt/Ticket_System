@@ -266,7 +266,7 @@ int main(int argc, char **argv)
 		found =0;
 	}
 	printf("\033[0m"); //resetting the color to the default color
-	sleep(5);
+	sleep(4);
 	/*printing the final status of the server tickets*/
 	
 	printf("TICKET NUMBER    PRICE   STATUS\n");
