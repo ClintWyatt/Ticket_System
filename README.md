@@ -8,4 +8,4 @@ To run the program, follow the steps below:
 5. Now, on another machine, compile the other client (ticketCli.c) by typing gcc ticketCli.c -lpthread.
 6. To run the clinet, type ./a.out <server machine name> <server port> <other client's ip address>
 
-To find the ip address on a machine running linux ubuntu, type ifconfig. 
+To find the ip address on a machine running linux ubuntu, type ifconfig.  
