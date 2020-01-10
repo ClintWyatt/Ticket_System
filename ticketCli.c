@@ -122,14 +122,7 @@ int main(int argc, char **argv)
 	printf("\033[0m"); //resetting the color to the default color
 	
 	int z;
-	/*
-	for(z =0; z < 2147483647; z++)//this loop will simulate a sleep. Sleep is not used here since asleep also puts the threads to sleep as well
-	{
-		//do nothing in this loop	
-	}
-	
-	*/
-	sleep(3);
+	sleep(2);
 	shared = 98;
 	pthread_mutex_destroy(&mutex1);
 	pthread_cond_signal(&signal);//ending the client thread
@@ -199,11 +192,12 @@ void *client()
                   }
                   else //buybck suceeded
                   {
-                 	 //n = recvfrom(sockfd1, buffer, sizeof(buffer), 0, (struct sockaddr *) &scalp_addr, &len1);
+			 printf("\033[0;35m"); //changing the color to magenta                 	
                  	 char *token = strtok(buffer, " ");//setting up string tokenizing
                          balance = atoi(token);//getting the updated balance
                          token = strtok(NULL, " ");//going to the next non space character
                          _ticket = atoi(token);//getting ticket
+			 printf("Bought ticket %d from scalper \n", _ticket);
                          token = strtok(NULL, " ");//getting the next no space character
                          _price = atoi(token);//getting the price
                          for(j =0; j< 15; j++)
@@ -290,6 +284,7 @@ void *svr() //server thread
 			printf("\033[0;31m");//changing output to red
 			printf("[->SCALPER]: SCALP %d %d \n", ticketNum[index], lowest);
 			amount -= lowest;//updating the clinets balance
+			balance += lowest; //updating the current client with the money from the other client
 			_price = lowest;//getting the ticket price
 			number = ticketNum[index];//getting the ticket number
 			ticketNum[index] =0;
