@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 	//tcp setup end
 	
 	
-
+	//setting up the udp client connection
 	bzero(&scalp_addr, sizeof(scalp_addr));
 	scalp_addr.sin_family = AF_INET; 
 	scalp_addr.sin_port = htons(portno +1);
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 	char *token;
 	for(i =0; i<15; i++)
 	{
-		printf("\033[0;33m");//changing output to blue
+		printf("\033[0;33m");//changing output to yellow
 		printf("[<>CLIENT]: BUY %d \n", balance);
 		usleep(1000);
 		sprintf(buffer, "%d", balance);
@@ -157,6 +157,7 @@ int main(int argc, char **argv)
 
 void *client()
 {
+	pthread_mutex_lock(&mutex1);
 	int n, j, sum, _ticket, _price;	
 	shared = 0;
 
